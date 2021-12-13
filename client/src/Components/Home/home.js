@@ -8,12 +8,10 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { styled, alpha } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-import { fontFamily, textAlign } from '@mui/system';
+import { borderRadius, createTheme, fontFamily, textAlign } from '@mui/system';
 import { Avatar } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
 import Carousell from './Carousell';
-import owlcor from './owlcor';
-import Owlcor from './owlcor';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
@@ -174,8 +172,21 @@ const useStyles = makeStyles({
         backgroundImage:`url(https://user-images.githubusercontent.com/52281814/143683715-bfd8e71b-c367-49b5-99ec-0a53b2475962.png)`,
         height: 'auto',
         width: 'auto',
-    }
-        
+    },
+    back: {
+        backgroundColor: '#FFF',
+        height: '1279px',
+        width: '1446px', 
+    },
+       btn : {
+       backgroundColor: '#ffffff08',
+       border: '2px solid black',
+       borderRadius: '5em',
+       display: 'flex' ,
+       height: '85px',
+       minWidth: '332px',
+       padding: '20.0px 42px',
+       } 
 });
 
 const Search = styled('div')(({ theme }) => ({
@@ -219,6 +230,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
     
+const customTheme = createTheme({
+    components: {
+        MuiContainer: {
+            styleOverrides: {
+                root: {
+                    border: "1px solid black",
+                    width: 80,
+                    height: 80,
+                    borderRadius: 8
+                }
+            }
+        }
+    }
+});
 
 const Home = () => { 
      const classes = useStyles();
@@ -226,6 +251,7 @@ const Home = () => {
     return ( 
         <div className={classes.cover}>
           <Container>
+              {/* Page -1 */}
             <Grid paddingLeft={3} container spacing={4} columns={12}>
                 <Grid item xs={3}>
                     <Paper elevation={0} className={classes.driveicon}><img src="https://user-images.githubusercontent.com/52281814/143473213-651e5378-8948-4f80-82bd-fef0b93ef50a.png"/></Paper>
@@ -297,6 +323,7 @@ const Home = () => {
                 </Grid>
             </Grid>
           </Container>
+          {/* Page -2 */}
             <Grid container columns={12}>
                 <Grid item xs={2}>
                     <Paper elevation={0}><img src="https://user-images.githubusercontent.com/52281814/143560984-849b814a-bcce-4c79-b56a-bfd0ea596993.png" />
@@ -330,9 +357,9 @@ const Home = () => {
 
                 </Grid>
             </Container>
+            {/* Page 3 */}
             <div spacing={2} className={classes.frame3}>
                 <Grid container  className={classes.frame2} column={12}>
-                    
                     <Grid marginLeft='25px' item xs={3}>
                         <Container >
                         <Paper  elevation={0} className={classes.cardd}>
@@ -380,15 +407,10 @@ const Home = () => {
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum libero sollicitudin, tristique ipsum ac,
                         </Typography>
                     </Grid>
-                    {/* <Grid item className={classes.leftend} xs={2}>
-                        <Paper >
-                            <img src='https://user-images.githubusercontent.com/52281814/143675052-8ba80dd6-1ee0-4a4a-9fb9-354c2416f0b8.png'>
-                         </img>
-                        </Paper>
-                    </Grid> */}
                </Grid>
             </div>
             <div>
+            {/* Page 4 */}
             <Grid container columns={12}>
                 <Grid item xs={3} ></Grid>
                 <Grid item xs={6}>
@@ -482,12 +504,13 @@ const Home = () => {
                 </Grid>
                 </Grid>
             </div>
-            <div>
-                <Grid container bgcolor="#FFF" columns={12}>
+            {/* Page 5 */}
+            <div className={classes.back}>
+                <Grid container bgcolor="#FFF" columns={12} >
                     <Grid item xs={2} ></Grid>
                     <Grid item xs={8}>
                         <Typography className={classes.gifts}
-                            marginTop='190px'
+                            marginTop='250px'
                             variant="h6" component="h5"
                             fontFamily='Montserrat'
                             fontWeight='bold'
@@ -502,15 +525,17 @@ const Home = () => {
             </div>
             <br></br>
             <br></br>
+            {/* Page 6 */}
             <div >
                 <Carousell/>
             </div>
+            {/* Page 7 */}
             <div>
-                <Grid container bgcolor="#FFF" columns={12}>
+                <Grid container bgcolor="#FFF" columns={12} className={classes.back}>
                     <Grid item xs={4} ></Grid>
                     <Grid item xs={4}>
                         <Typography className={classes.gifts}
-                            marginTop='190px'
+                            marginTop='210px'
                             variant="h6" component="h5"
                             fontFamily='Montserrat'
                             fontWeight='bold'
@@ -526,6 +551,7 @@ const Home = () => {
             </div>
             <br></br>
             <br></br>
+            {/* Page 8 */}
             <div >
                <Container >
                     <Grid container direction='row' marginTop='60px' backgroundColor='#FFF'columns={12} >
@@ -543,10 +569,10 @@ const Home = () => {
             </div>
             <br></br>
             <br></br>
-            <Grid container bgcolor="#FFF" columns={12}>
+            <Grid container bgcolor="#ffffff08" columns={12} >
                 <Grid item xs={4} ></Grid>
                 <Grid item paddingLeft='165px' xs={4}>
-                   <Button>Show More Options</Button>
+                    <Button  className={classes.btn}>Explore More Events</Button>
                 </Grid>
                 <Grid item xs={4} ></Grid>
             </Grid>
